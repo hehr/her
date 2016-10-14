@@ -71,4 +71,16 @@ function _M.update_user( self , user )
 
 end
 
+function _M.delete_user(self , id)
+	
+	local sql = "delete from tb_user where id = " .. id ..";"
+
+	if _M.db ~= nil then 
+		return _M.db:delete(sql)
+	end
+
+	return nil , 'can not get db'
+
+end
+
 return _M
