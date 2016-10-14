@@ -1,21 +1,21 @@
-local route =  require("lua.config.route")
+local router =  require("lua.config.router")
 local cjson = require("cjson")
 
 local method = ngx.req.get_method()
 local url = ngx.var.uri 
 
-local worker
+local service
 local body
 
-for  u , t in pairs(route) do
+for  u , t in pairs(router) do
 	
 	if u == url then
-		worker  = t  break
+		service  = t  break
 	end
 
 end
 
-if not worker or method ~= worker.method then -- forbidden
+if not service or method ~= service.method then -- forbidden
 	ngx.status = ngx.HTTP_FORBIDDEN 
 	ngx.exit(ngx.status)
 	return
@@ -46,6 +46,6 @@ if not body then   -- charge body in there , can notes this code
 	return
 end
 
-worker.object:feed(body)
+service.object:feed(body)
 
 

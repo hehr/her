@@ -93,7 +93,7 @@ function _M.delete( self,sql )
         return nil , err
     end
 
-    local res, err　 =　 db:query( sql )
+    local res,err = db:query( sql )
 
     if not res then
         ngx.log(ngx.ERR , 'msyql delete error :' .. err  )
