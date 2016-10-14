@@ -29,7 +29,7 @@ end
 
 function _M.query_user_by_device( self , device )
 
-	local sql = "SELECT id,device_id,open_id,nick_name,sex,language,city,province,country,headimgurl,subscribe_time,unionid,remark,groupid,tagid_list FROM tb_user WHERE device_id = \'"..device.."\' limit 1;"
+	local sql = "SELECT id,device_id,open_id,nick_name,sex,language,city,province,country,headimgurl,subscribe_time,unionid,remark,groupid,tagid_list FROM tb_user WHERE device_id = \'".. device .."\' limit 1;"
 
 	if _M.db ~= nil then
 		return	_M.db:select(sql)

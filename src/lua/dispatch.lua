@@ -1,4 +1,4 @@
-local router =  require("lua.config.router")
+local router = require("lua.config.router")
 local cjson = require("cjson")
 
 local method = ngx.req.get_method()
