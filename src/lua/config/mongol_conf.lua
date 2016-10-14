@@ -3,7 +3,7 @@ local _M = {
 	 host  = '127.0.0.1',
      user  = 'root',
      pwd = 'root',
-     db_name = 'db_wechat'
+     db_name = 'user_info'
 }
 
 return _M
