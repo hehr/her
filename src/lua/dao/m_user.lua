@@ -1,3 +1,6 @@
+--[[
+    mongol dao　demo
+]]--
 local mongol = require("lua.db.mongol")
 local conf = require("lua.config.mongol_conf")
 local random = require("lua.utils.random")
@@ -41,35 +44,43 @@ function _M.insert_user( self , doc )
 end
 
 
-function _M.query_user( self , query )
+function _M.query_user( self , query ,returnfields)
     
     if not _M.db  then
         return nil , 'can not get db'
     end
-
-    -- local query = { edge = 18 }
     
-    return _M.db:select(_M.collection,query )
+    return _M.db:query_one( _M.collection,query,returnfields )
 
 end
 
-function _M.update_user( self, selector , update )
+function _M.query_users(self,query,returnfields , number)
+
+    if not _M.db  then
+        return nil , 'can not get db'
+    end
+    
+    return _M.db:query( _M.collection,query,returnfields,number )
+
+end
+
+function _M.update_user( self, selector , update , upsert　, multiupdate)
     
     if not _M.db  then
         return nil , 'can not get db'
     end
 
-    return _M.db:update( _M.collection,selector,update ) 
+    return _M.db:update( _M.collection,selector,update,upsert,multiupdate) 
 
 end
 
-function _M.delete_user(self, selector )
+function _M.delete_user(self, selector ,single_remove )
 
     if not _M.db  then
         return nil , 'can not get db'
     end
 
-    return _M.db:delete( _M.collection,selector )
+    return _M.db:delete( _M.collection,selector,single_remove )
 
 end
 

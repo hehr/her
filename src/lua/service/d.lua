@@ -1,3 +1,6 @@
+--[[
+    mysql delete service demo
+]]--
 local cjson = require ("cjson")
 local user  = require("lua.dao.user")
 local random = require("lua.utils.random")
