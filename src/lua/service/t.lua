@@ -1,3 +1,7 @@
+--[[
+	mysql query service demo
+]]--
+
 local cjson = require ("cjson")
 local user  = require("lua.dao.user")
 

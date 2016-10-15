@@ -1,3 +1,7 @@
+--[[
+  mongo insert service demo
+]]--
+
 local cjson = require("cjson")
 local user = require("lua.dao.m_user")
 local random = require("lua.utils.random")
@@ -13,18 +17,17 @@ function _M.feed(self , body)
 
     local edge = random:get_random_number(100)
 
-    local name = 'hehr_' .. random:get_random_id(3)
+    local id = random:get_random_id(6)
+
+    local name = 'hehr_' .. id
     
-    local sex = '男'
-    
-    local doc = { edge =  edge, name = name , sex = sex }
+    local doc = { id = id , edge =  edge, name = name , sex = sex }
 
-
-
-    if doc.edge <= 20 then
+    if doc.edge <= 50 then
         doc.sex = '女'
+    else
+        doc.sex = '男'
     end
-
 
     local docs = {doc}
 

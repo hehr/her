@@ -1,3 +1,6 @@
+--[[
+	mysql dao demo
+]]--
 local mysql =  require("lua.db.mysql")
 local mysql_conf =  require("lua.config.mysql_conf")
 
