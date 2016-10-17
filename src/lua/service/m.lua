@@ -4,7 +4,7 @@
 
 local cjson = require ("cjson")
 local user  = require("lua.dao.user")
-local random = require("lua.utils.random")
+local random = require("resty.random")
 
 local _M = { _M = '0.1.0' }
 
@@ -16,7 +16,7 @@ function _M.feed( self , body )
 	
 	local user =  user:new()
 
-    local random_id =  random:get_random_id(6)
+    local random_id =  random:token(6)
 
     local user_info = { open_id = random_id ,
                         nick_name = random_id .. 'hehr' ,

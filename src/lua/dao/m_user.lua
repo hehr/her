@@ -3,7 +3,6 @@
 ]]--
 local mongol = require("lua.db.mongol")
 local conf = require("lua.config.mongol_conf")
-local random = require("lua.utils.random")
 local cjson = require("cjson")
 
 local _M = { _VERSION = '0.1.0' }
@@ -37,9 +36,6 @@ function _M.insert_user( self , doc )
         return nil , 'can not get db'
     end
 
-
-    -- local doc = { name  = random:get_random_id(5) , edge = random:get_random_number(100) }
-    
     return _M.db:insert(_M.collection,doc )
 
 end

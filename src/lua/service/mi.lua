@@ -4,7 +4,7 @@
 
 local cjson = require("cjson")
 local user = require("lua.dao.m_user")
-local random = require("lua.utils.random")
+local random = require("resty.random")
 
 local _M = { _VSERSION = '0.1.0' }
 
@@ -15,9 +15,9 @@ end
 
 function _M.feed(self , body)
 
-    local edge = random:get_random_number(100)
+    local edge = random:number(1,100)
 
-    local id = random:get_random_id(6)
+    local id = random:token(6)
 
     local name = 'hehr_' .. id
     
