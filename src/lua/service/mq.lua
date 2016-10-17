@@ -13,62 +13,35 @@ end
 
 function _M.feed(self,body)
 
-    local query = { edge = 29 }
+    -- local query = { edge = 29 }
 
-    -- local returnfields = {id = '' , edge =''}
-
-    local user = user:new()
+    -- local user = user:new()
     
-    local res , err = user:query_user(query,returnfields)
+    -- local res , err = user:query_user(query,returnfields)
 
-    ngx.say('id:' .. res.id ..' ,edge: ' ..res.edge .. ' , name:'..res.name .. ' ,sex : ' ..res.sex )
+    -- ngx.say('id:' .. res.id ..' ,edge: ' ..res.edge .. ' , name:'..res.name .. ' ,sex : ' ..res.sex )
 
 
 
     --has bug
-    -- local query = { edge = 18 }
+    local query = { edge = 18 }
     
-    -- local returnfields = { }
+    local returnfields = {}
     
-    -- local number = 10
+    local number = 88
 
-    -- local user = user:new()
+    local user = user:new()
 
-    -- local cursor , err = user:query_users( query ) 
+    local result , err = user:query_users(query,returnfields,number) 
 
-    -- if not cursor then
-    --     ngx.say(err)
-    --     return
-    -- end
+    if not result then
+        ngx.say(err)
+        return
+    end
 
-    -- local index , item = cursor:next()
-
-    -- ngx.log(ngx.INFO , "err  : " .. err)
-    -- ngx.log(ngx.INFO , "ind ex : " .. index)
-    -- ngx.log(ngx.INFO , "item:" .. type(item)) 
-
-    -- for index , item in cursor:pairs() do
-    --     -- ngx.log(ngx.INFO , "ind ex : " .. index)
-    --     -- ngx.log(ngx.INFO , "item:" .. type(item))    
-    -- end
-
+    ngx.log(ngx.INFO , "result:" .. result[1].id)
     
-
-    -- while( true ) do
-
-    --     local index , item = cursor:next()
-
-    --     if not index or not item then
-    --         break
-    --     end
-
-    --     ngx.log(ngx.INFO , "index : " .. index)
-    --     ngx.log(ngx.INFO , "item:" .. type(item))
-
-    -- end
-
-
-    -- ngx.say('lalal')
+    ngx.say('lalal')
 
 end
 
