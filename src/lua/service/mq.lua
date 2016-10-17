@@ -13,35 +13,36 @@ end
 
 function _M.feed(self,body)
 
-    -- local query = { edge = 29 }
+    local query = { edge = 29 }
 
-    -- local user = user:new()
-    
-    -- local res , err = user:query_user(query,returnfields)
-
-    -- ngx.say('id:' .. res.id ..' ,edge: ' ..res.edge .. ' , name:'..res.name .. ' ,sex : ' ..res.sex )
-
-
-
-    --has bug
-    local query = { edge = 18 }
+    local user = user:new()
     
     local returnfields = {}
     
-    local number = 88
+    local res , err = user:query_user(query,returnfields)
 
-    local user = user:new()
+    ngx.say('id:' .. res.id ..' ,edge: ' ..res.edge .. ' , name:'..res.name .. ' ,sex : ' ..res.sex )
 
-    local result , err = user:query_users(query,returnfields,number) 
 
-    if not result then
-        ngx.say(err)
-        return
-    end
 
-    ngx.log(ngx.INFO , "result:" .. result[1].id)
+    -- local query = { edge = 18 }
     
-    ngx.say('lalal')
+    -- local returnfields = {}
+    
+    -- local number = 88
+
+    -- local user = user:new()
+
+    -- local result , err = user:query_users(query,returnfields,number) 
+
+    -- if not result then
+    --     ngx.say(err)
+    --     return
+    -- end
+
+    -- ngx.log(ngx.INFO , "result:" .. result[1].id)
+    
+    -- ngx.say('lalal')
 
 end
 
