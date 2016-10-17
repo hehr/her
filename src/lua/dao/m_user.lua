@@ -4,6 +4,7 @@
 local mongol = require("lua.db.mongol")
 local conf = require("lua.config.mongol_conf")
 local random = require("lua.utils.random")
+local cjson = require("cjson")
 
 local _M = { _VERSION = '0.1.0' }
 
@@ -39,12 +40,12 @@ function _M.insert_user( self , doc )
 
     -- local doc = { name  = random:get_random_id(5) , edge = random:get_random_number(100) }
     
-    return _M.db:insert(_M.collection , doc )
+    return _M.db:insert(_M.collection,doc )
 
 end
 
 
-function _M.query_user( self , query ,returnfields)
+function _M.query_user( self,query,returnfields)
     
     if not _M.db  then
         return nil , 'can not get db'
@@ -54,27 +55,27 @@ function _M.query_user( self , query ,returnfields)
 
 end
 
-function _M.query_users(self,query,returnfields , number)
+function _M.query_users(self,query,returnfields,number)
 
     if not _M.db  then
         return nil , 'can not get db'
     end
     
-    return _M.db:query( _M.collection,query,returnfields,number )
+    return _M.db:query( _M.collection,query,returnfields,number)
 
 end
 
-function _M.update_user( self, selector , update , upsert　, multiupdate)
+function _M.update_user( self,selector,update,upsert,multiupdate)
     
     if not _M.db  then
         return nil , 'can not get db'
     end
 
-    return _M.db:update( _M.collection,selector,update,upsert,multiupdate) 
+    return _M.db:update( _M.collection,selector,update,upsert,multiupdate,false ) 
 
 end
 
-function _M.delete_user(self, selector ,single_remove )
+function _M.delete_user(self,selector,single_remove )
 
     if not _M.db  then
         return nil , 'can not get db'

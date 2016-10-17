@@ -142,10 +142,16 @@ function _M.query( self,collection_name,query,returnfields,num_each_query,is_aut
        ngx.log(ngx.ERR ,  'mongol can not find result' )
        return nil , 'can not find result'    
     end
-    
-    _set_keepalive( self , conn ) -- set in pool 
 
-    return cursor , 'success'
+    local result  = {}
+
+    for index, item in cursor:pairs() do
+        table.insert( result, item )
+    end
+    
+     _set_keepalive( self , conn ) -- set in pool 
+
+    return result , 'success'
 end
 
 --[[
@@ -208,11 +214,11 @@ function _M.update(self,collection_name,selector,update,upsert,multiupdate,is_au
     local collection =  db:get_col(collection_name)
     
     if not collection then
-        ngx.log(ngx.ERR ,  ' mongol can not get collection ' )
-        return false , 'can not get collection '    
+        ngx.log(ngx.ERR ,  ' mongol can not get collection' )
+        return false , 'can not get collection'    
     end
 
-    local n , err  = collection:update(selector, update, upsert,multiupdate, false)
+    local n , err  = collection:update(selector,update,upsert,multiupdate,false)
 
     if not n then
         ngx.log(ngx.ERR, "mongol update err , err: " .. err)

@@ -14,12 +14,13 @@ end
 
 function _M.feed(self,body)
 
-    local selector = { edge = 18 }
-    local update = { name = '网儿码字' ,sex = '女' ,edge = 100 , id = 'ia8wbd'}
-    local upsert = 0 --has bug , upsert not work
-    local multiupdate = 0 --has bug ,multiupdate not work
+    -- local selector = { id = 'dsdfsadfsdfsdfsdafsdfasd'}
+    local selector = {sex = '男'}
+    local update = { name = '了打死打fsdafsadf' ,sex = '女' ,edge = 1000000 , id = 'lalalalala'}
+    local upsert = 0 
+    local multiupdate = 1 --has bug ,multiupdate not work
     local user =  user:new()
-    local res , err = user:update_user(selector , update , upsert　, multiupdate)
+    local res , err = user:update_user(selector,update,upsert,multiupdate)
     ngx.say(err)
 
 end
