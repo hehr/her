@@ -373,3 +373,180 @@ Percentage of the requests served within a certain time (ms)
   99%     22
  100%    464 (longest request)
 ----------------------------------------------------------------------------------------------------------------------------------
+查询操作：
+ab  -n 10000 -c 250 -k   127.0.0.1:8000/mq?device=12345
+结果：
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        openresty/1.9.7.1
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /mq?device=12345
+Document Length:        50 bytes
+
+Concurrency Level:      250
+Time taken for tests:   1.576 seconds
+Complete requests:      10000
+Failed requests:        0
+Keep-Alive requests:    10000
+Total transferred:      2180000 bytes
+HTML transferred:       500000 bytes
+Requests per second:    6343.69 [#/sec] (mean)
+Time per request:       39.409 [ms] (mean)
+Time per request:       0.158 [ms] (mean, across all concurrent requests)
+Transfer rate:          1350.51 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.5      0       4
+Processing:    11   39   3.6     38      57
+Waiting:       11   39   3.6     38      57
+Total:         11   39   3.5     38      58
+
+Percentage of the requests served within a certain time (ms)
+  50%     38
+  66%     39
+  75%     39
+  80%     40
+  90%     45
+  95%     47
+  98%     48
+  99%     51
+ 100%     58 (longest request)
+
+ ------------------------------------------------------------------------------------------------------
+ update操作
+ ab   -n 10000    -c 150    -k    -p /home/hehr/桌面/u   127.0.0.1:8000/mu
+ 结果：
+ This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        openresty/1.9.7.1
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /mu
+Document Length:        8 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.544 seconds
+Complete requests:      10000
+Failed requests:        0
+Keep-Alive requests:    9907
+Total transferred:      1749535 bytes
+Total body sent:        1790000
+HTML transferred:       80000 bytes
+Requests per second:    18382.62 [#/sec] (mean)
+Time per request:       5.440 [ms] (mean)
+Time per request:       0.054 [ms] (mean, across all concurrent requests)
+Transfer rate:          3140.73 [Kbytes/sec] received
+                        3213.37 kb/s sent
+                        6354.10 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       2
+Processing:     0    5  13.9      5     523
+Waiting:        0    5  13.9      5     523
+Total:          0    5  13.9      5     523
+
+Percentage of the requests served within a certain time (ms)
+  50%      5
+  66%      5
+  75%      5
+  80%      5
+  90%      6
+  95%      7
+  98%     11
+  99%     20
+ 100%    523 (longest request)
+hehr@hehr:~/project/lua/compte$ ab   -n 10000    -c 150    -k    -p /home/hehr/桌面/u   127.0.0.1:8000/mu
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        openresty/1.9.7.1
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /mu
+Document Length:        8 bytes
+
+Concurrency Level:      150
+Time taken for tests:   0.533 seconds
+Complete requests:      10000
+Failed requests:        0
+Keep-Alive requests:    10000
+Total transferred:      1750000 bytes
+Total body sent:        1790000
+HTML transferred:       80000 bytes
+Requests per second:    18748.46 [#/sec] (mean)
+Time per request:       8.001 [ms] (mean)
+Time per request:       0.053 [ms] (mean, across all concurrent requests)
+Transfer rate:          3204.08 [Kbytes/sec] received
+                        3277.32 kb/s sent
+                        6481.40 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       3
+Processing:     0    8  25.2      7     522
+Waiting:        0    8  25.2      7     522
+Total:          0    8  25.2      7     522
+
+Percentage of the requests served within a certain time (ms)
+  50%      7
+  66%      7
+  75%      7
+  80%      7
+  90%      7
+  95%      8
+  98%      8
+  99%     13
+ 100%    522 (longest request)
