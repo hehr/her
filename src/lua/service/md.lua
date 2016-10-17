@@ -4,7 +4,6 @@
 
 local cjson = require("cjson")
 local user = require("lua.dao.m_user")
-local random = require("lua.utils.random")
 
 
 

@@ -6,6 +6,7 @@ local mi = require("lua.service.mi")
 local mq = require("lua.service.mq")
 local md = require("lua.service.md")
 local mu = require("lua.service.mu")
+local h = require("lua.service.h")
 
 local _M = {
 
@@ -17,6 +18,7 @@ local _M = {
 ['/mq'] = {method = 'GET',object = mq.new()},
 ['/md'] = {method = 'POST',object = md.new()},
 ['/mu'] = {method = 'POST',object = mu.new()},
+['/h'] = {method = 'GET',object = h.new()},
 
 }
 
