@@ -4,7 +4,7 @@ local cjson = require("cjson")
 local _M = {_VERSION = '0.1.0'}
 
 --[[
-example: param = { url = 'www.google.com' , method='GET' , ssl_verify = false , headers = nil , query = { sid = 10300 , encode='utf-8' } , body = {grant_type = "client_credential"} }
+example: param = { url = 'https://www.google.com' , method='GET' , ssl_verify = false , headers = nil , query = { sid = 10300 , encode='utf-8' } , body = {grant_type = "client_credential"} }
 ]]--
 
 
@@ -38,7 +38,7 @@ function _M.new( self,param )
         body = cjson.encode(body)
     end
 
-    local  ssl_verify = param.ssl_verify  or true
+    local  ssl_verify = param.ssl_verify  or true --false is https　　
     local  headers =  param.headers or {["Content-Type"] = "application/x-www-form-urlencoded"}
 
     return setmetatable( { 
