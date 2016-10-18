@@ -34,7 +34,7 @@ function _M.new( self,param )
 
     local body = param.body
 
-    if not body then
+    if body then
         body = cjson.encode(body)
     end
 
