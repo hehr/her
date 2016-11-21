@@ -14,7 +14,7 @@ function _M.init(self , opt )
  local timeout = opt.timeout or 1000
  local db_name = opt.db_name or 'db'
  local idle_time = opt.idle_time or 10000
- local pool_size = opt.pool_size or 100
+ local pool_size = opt.pool_size or 10000
 
  return setmetatable( { 
                         timeout = timeout,

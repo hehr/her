@@ -3,19 +3,18 @@ local cjson = require("cjson")
 
 local method = ngx.req.get_method()
 local url = ngx.var.uri 
-
-local service
-local body
+local proxy
+local param
 
 for  u , t in pairs(router) do
 	
 	if u == url then
-		service  = t  break
+		proxy  = t  break
 	end
 
 end
 
-if not service or method ~= service.method then -- forbidden
+if not proxy or method ~= proxy.method then -- forbidden
 	ngx.status = ngx.HTTP_FORBIDDEN 
 	ngx.exit(ngx.status)
 	return
@@ -25,27 +24,29 @@ end
 
 if method == 'GET' then
 
-	body = ngx.req.get_uri_args()
+	param = ngx.req.get_uri_args()
 
 elseif method == 'POST' then
 
-	ngx.req.read_body();
-	body = ngx.req.get_post_args()
+	ngx.req.read_body()
+	param = ngx.req.get_body_data()
 
 else
 
-	ngx.req.read_body();
-	body = ngx.req.get_body_data();
+ 	ngx.status = ngx.HTTP_FORBIDDEN 
+	ngx.exit(ngx.status)
+	return
 
 end
 
--- ngx.log(ngx.INFO , "body : " .. body)
-if not body then   -- charge body in there , can notes this code
+if not param then  
+
 	ngx.status = ngx.HTTP_BAD_REQUEST
 	ngx.exit(ngx.status)
 	return
+
 end
 
-service.object:feed(body)
+proxy.object:feed(param)
 
 
