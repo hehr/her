@@ -136,7 +136,7 @@ function _M.query( self,collection_name,query,returnfields,num_each_query,is_aut
         return nil , 'can not get collection'    
     end
 
-    local cursor  =  collection:find(query , returnfields , num_each_query)
+    local cursor = collection:find(query,returnfields,num_each_query)
 
     if not cursor then
        ngx.log(ngx.ERR ,  'mongol can not find result' )
@@ -152,6 +152,7 @@ function _M.query( self,collection_name,query,returnfields,num_each_query,is_aut
      _set_keepalive( self , conn ) -- set in pool 
 
     return result , 'success'
+
 end
 
 --[[
@@ -165,7 +166,7 @@ function _M.insert(self , collection_name , doc , is_auth , continue_on_error )
     local is_auth = is_auth or false
     local continue_on_error = continue_on_error or 0
 
-    local db , err , conn = _connect(self , is_auth ) 
+    local db , err , conn = _connect( self , is_auth ) 
 
     if not db then
         ngx.log(ngx.ERR, "mongol connect db err , err: " .. err)
@@ -178,8 +179,7 @@ function _M.insert(self , collection_name , doc , is_auth , continue_on_error )
         ngx.log(ngx.ERR ,  ' mongol can not get collection ' )
         return false , 'can not get collection '    
     end
-
-    local n ,err = collection:insert( doc , continue_on_error ,false)
+    local n , err = collection:insert( doc , continue_on_error ,false)
 
     if not n then
         ngx.log(ngx.ERR, "mongol insert err , err: " .. err)
